@@ -1,0 +1,11 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:72px}
+body{background:#0a0a0a;color:#fff;overflow-x:hidden;font-family:var(--font-body),system-ui,sans-serif}
+h1,h2,h3{font-family:var(--font-display),Impact,sans-serif;letter-spacing:.01em}
+.glow{box-shadow:0 0 40px -10px rgba(255,106,0,.5)}
+:focus-visible{outline:2px solid #ffc21a;outline-offset:3px}
+.no-scrollbar{scrollbar-width:none}.no-scrollbar::-webkit-scrollbar{display:none}
+@keyframes ember{0%{transform:translateY(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-140px);opacity:0}}
+.ember{position:absolute;bottom:0;width:4px;height:4px;border-radius:9999px;background:#ffc21a;box-shadow:0 0 8px #ff6a00;animation:ember 7s linear infinite}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
