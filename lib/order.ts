@@ -1,3 +1,4 @@
+
 // ============================================================
 //  LÓGICA DE PEDIDO — roda NO SERVIDOR (app/api/order/route.ts).
 //  Recebe só ids + quantidades + dados do cliente. Preços, taxa e total vêm do catálogo oficial.
@@ -201,6 +202,17 @@ function buildMessage(p: ParsedOrder, lines: PricedLine[], subtotal: number, fee
     if (p.address.reference) out.push(`Referência: ${p.address.reference}`);
   }
   out.push("", "*FORMA DE PAGAMENTO:*", PAYMENT_LABEL[p.payment]);
+
+  // Dados do Pix exibidos somente quando o cliente seleciona Pix.
+  if (p.payment === "pix") {
+    out.push(
+      "",
+      "*DADOS PARA PAGAMENTO VIA PIX:*",
+      "Titular: Carlos Eduardo Pereira",
+      "Chave Pix (CNPJ): 66.251.223/0001-30"
+    );
+  }
+
   if (p.payment === "dinheiro" && p.changeForCents !== undefined) out.push(`Troco para: ${formatBRL(p.changeForCents)}`);
   if (p.notes) out.push("", "*OBSERVAÇÕES:*", p.notes);
   out.push("", "Cliente declarou ter 18 anos ou mais (declaração, sem verificação oficial).");
